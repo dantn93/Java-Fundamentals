@@ -12,7 +12,7 @@ sign = v >> (sizeof(int) * CHAR_BIT - 1);
 The last expression above evaluates to sign = v >> 31 for 32-bit integers.
 
 Vì thế, vẫn cho phép shift tối đa số bit nhưng không vượt quá kích thước của data size.
-Sau đây là link em tìm được: https://graphics.stanford.edu/~seander/bithacks.html 
+Đây là link em tìm được: https://graphics.stanford.edu/~seander/bithacks.html 
 
 học trò,
 Trần Ngọc Đản
