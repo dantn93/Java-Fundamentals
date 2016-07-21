@@ -1,0 +1,18 @@
+Kính thưa Cô,
+Em có tìm được một tài liệu ở website graphics.stanford.edu nói về cách lấy dấu của một số nguyên ở dạng nhị phân. Cụ thể:
+Dấu của một số nguyên là bit cuối cùng (bên phải), do đó để lấy được bit này thì người ta shift về phía bên phải một số bit như sau: số lượng bit/byte * số byte của kiểu dữ liệu (ở đây là số nguyên) - 1. Ở đây số nguyên có 32 bit, nên sẽ shift về bên phải 31 bit.
+
+Đoạn script
+// CHAR_BIT is the number of bits per byte (normally 8).
+sign = -(v < 0);  // if v < 0 then -1, else 0. 
+// or, to avoid branching on CPUs with flag registers (IA32):
+sign = -(int)((unsigned int)((int)v) >> (sizeof(int) * CHAR_BIT - 1));
+// or, for one less instruction (but not portable):
+sign = v >> (sizeof(int) * CHAR_BIT - 1); 
+The last expression above evaluates to sign = v >> 31 for 32-bit integers.
+
+Vì thế, vẫn cho phép shift tối đa số bit nhưng không vượt quá kích thước của data size.
+Sau đây là link em tìm được: https://graphics.stanford.edu/~seander/bithacks.html 
+
+học trò,
+Trần Ngọc Đản
